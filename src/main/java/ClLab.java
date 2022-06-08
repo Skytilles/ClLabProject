@@ -1,3 +1,6 @@
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class ClLab implements ClLabInterface {
     private String myString;
 
@@ -13,7 +16,11 @@ public class ClLab implements ClLabInterface {
 
     @Override
     public boolean detectCapitalUse() {
-        return false;
+        String regex = "^[A-Z]+$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(myString);
+
+        return matcher.groupCount() > 0? true : false;
     }
 
 }
