@@ -10,17 +10,18 @@ public class ClLab implements ClLabInterface {
     }
 
     @Override
-    public void setString(String string) {
+    public String setString(String string) {
         myString = string;
+        return string;
     }
 
     @Override
-    public boolean detectCapitalUse() {
+    public String detectCapitalUse() {
         String regex = "^[A-Z]+$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(myString);
 
-        return matcher.groupCount() > 0? true : false;
+        return String.valueOf(matcher.groupCount() > 0? true : false);
     }
 
 }
